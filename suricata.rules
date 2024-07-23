@@ -1,0 +1,5 @@
+pass tls $GX_NW_Priv any -> 93.184.215.14 443 (tls.sni; content:".example.com"; endswith; flow:to_server, established; msg:"gx-network private subnets to example.com public egress"; sid:1000001; rev:1;)
+pass tcp $GX_NW_Priv any -> 93.184.215.14 443 (http.host; content:".example.com"; endswith; flow:to_server, established; msg:"gx-network private subnets to example.com public egress"; sid:1000002; rev:1;)
+pass tls $GX_NW_Priv any -> [74.125.200.100/30,74.125.200.138/31,74.125.200.113] 443 (tls.sni; content:".google.com"; endswith; flow:to_server, established; msg:"gx-network private subnets to google.com public egress"; sid:1000003; rev:1;)
+pass tcp $GX_NW_Priv any -> [74.125.200.100/30,74.125.200.138/31,74.125.200.113] 443 (http.host; content:".google.com"; endswith; flow:to_server, established; msg:"gx-network private subnets to google.com public egress"; sid:1000004; rev:1;)
+pass tls ANY any -> $GX_NW_Pub 443 (flow:to_server, established; msg:"from ANY to gx-network webtier public ingress"; sid:1000005; rev:1;)

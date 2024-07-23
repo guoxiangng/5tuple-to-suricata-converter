@@ -1,0 +1,4 @@
+Action,Protocol,Src_IP,Src_Port,Dest_IP,Dest_Port,http host header domain to match,msg,sid,rev
+pass,tcp,$GX_NW_Priv,ANY,93.184.215.14,443,.example.com,gx-network private subnets to example.com public egress,1000001,1
+pass,tcp,$GX_NW_Priv,ANY,"[74.125.200.100/30,74.125.200.138/31,74.125.200.113]",443,.google.com,gx-network private subnets to google.com public egress,1000003,1
+pass,tcp,ANY,ANY,$GX_NW_Pub,443,,from ANY to gx-network webtier public ingress,1000005,1
